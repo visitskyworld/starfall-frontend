@@ -1,0 +1,11 @@
+@media screen and (max-width: 412px) {
+  .max-sm-col {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 413px) {
+  .max-sm-width {
+    width: 95%;
+  }
+}

@@ -6,6 +6,8 @@ import request from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import './App.css';
+
 const SubscribeSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('This field is required'),
 });
@@ -22,7 +24,7 @@ function App() {
   const handleSubmit = async (values: SubscribeInterface) => {
     try {
       const res = await axios.post(
-        'http://localhost:8080/api/subscribe',
+        window.location.origin + '/api/subscribe',
         values
       );
       if (res.data.email) {
@@ -47,7 +49,7 @@ function App() {
           alt="logo"
         />
       </div>
-      <div className="absolute bottom-[30px] flex w-full justify-center px-5">
+      <div className="absolute bottom-[60px] flex w-full justify-center px-5">
         <div className="flex flex-col">
           <span className="text-white text-xl font-medium uppercase">
             Submit your email address to be notified of updates:
@@ -62,25 +64,27 @@ function App() {
             }}
           >
             {({ errors }) => (
-              <Form className="w-full flex flex-col mt-2 focus-visible:outline-none">
-                <div className="w-full flex">
-                  <div className="flex grow items-center p-2 mr-3 border-2 border-white rounded-sm !bg-transparent">
-                    <Field
-                      name="email"
-                      type="email"
-                      autoComplete="off"
-                      className="text-xl text-white bg-transparent outline-none"
-                    />
+              <Form className="w-full flex mt-2 focus-visible:outline-none">
+                <div className="w-full flex max-sm-col">
+                  <div className="flex flex-col grow">
+                    <div className="flex w-full max-sm-width items-center p-2 border-2 border-white rounded-sm !bg-transparent">
+                      <Field
+                        name="email"
+                        type="email"
+                        autoComplete="off"
+                        className="w-full text-xl text-white bg-transparent outline-none"
+                      />
+                    </div>
+                    <div className="text-[#fa2323] font-bold h-6">
+                      {errors.email ? errors.email : ''}
+                    </div>
                   </div>
                   <button
                     type="submit"
-                    className="border-2 border-white outline-none px-5 py-2 text-white font-normal text-lg uppercase"
+                    className="border-2 border-white outline-none px-5 py-2 mb-6 text-white font-normal text-lg uppercase"
                   >
                     Submit
                   </button>
-                </div>
-                <div className="text-[#fa2323] font-bold h-6">
-                  {errors.email ? errors.email : ''}
                 </div>
               </Form>
             )}
