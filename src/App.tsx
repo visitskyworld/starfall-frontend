@@ -29,8 +29,9 @@ function App() {
   };
 
   useEffect(() => {
-    window.addEventListener('load', handleLoading);
-    return () => window.removeEventListener('load', handleLoading);
+    setTimeout(() => {
+      handleLoading();
+    }, 2500);
   }, []);
 
   const handleSubmit = async (values: SubscribeInterface) => {
@@ -58,7 +59,7 @@ function App() {
         <div className="relative w-[100vw] h-[100vh] bg-[url('./assets/img/background.png')] bg-no-repeat bg-cover bg-[center_center]">
           <div className="absolute w-full h-full flex justify-center items-center animate-fade-in">
             <img
-              className="lg:w-[650px] md:w-[500px] sm:w-[350px] w-[350px] translate-y-[-110%]"
+              className="select-none lg:w-[650px] md:w-[500px] sm:w-[350px] w-[350px] translate-y-[-110%]"
               src="/starfall.png"
               alt="logo"
             />
