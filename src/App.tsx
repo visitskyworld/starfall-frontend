@@ -60,7 +60,7 @@ function App() {
           <div className="absolute w-full h-full flex justify-center items-center animate-fade-in">
             <img
               className="select-none lg:w-[650px] md:w-[500px] sm:w-[350px] w-[350px] translate-y-[-110%]"
-              src="/starfall.png"
+              src="/starfall.svg"
               alt="logo"
             />
           </div>
